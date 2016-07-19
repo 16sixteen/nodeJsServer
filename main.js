@@ -23,10 +23,10 @@ function user (user_data) {
 }
  
 
-// app.get('/', function (request, response) {
-//   var u = new user(123,{x:1,y:2,z:3});
-//   response.send(u);
-// });
+app.get('/', function (request, response) {
+  var u = "helloworld";
+  response.send(u);
+});
 
 app.post('/',function(req,res){
     console.log("get post req");
