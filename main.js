@@ -24,7 +24,8 @@ function user (user_data) {
 }
 
 app.get('/getUserId',function(req,res){
-    var id = 0;
+    var id = userId;
+    userId++;
     res.send(id);
 });
 
@@ -41,9 +42,11 @@ app.post('/',function(req,res){
     usermessage[u.user_id] = u;
     console.log(usermessage);
     var user_array = [];
-    for(var user in usermessage){
-        user_array.push(usermessage[user]);
+    for(var i in usermessage){
+        //console.log(user);
+        user_array.push(usermessage[i]);
     }
+
     res.send(
         {user_array:user_array}
         );
