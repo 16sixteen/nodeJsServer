@@ -24,6 +24,7 @@ function user (user_data) {
 }
 
 app.get('/getUserId',function(req,res){
+    console.log("get Id");
     var id = userId;
     userId++;
     res.send(id);
