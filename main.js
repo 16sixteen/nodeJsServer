@@ -19,7 +19,7 @@ function user (user_data) {
         z:user_data.user_rotation.z,
         w:user_data.user_rotation.w
     };
-    this.inputMotionValue = user_data.inputMotionValue;
+    //this.inputMotionValue = user_data.inputMotionValue;
 }
  
 
