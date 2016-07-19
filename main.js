@@ -4,7 +4,8 @@ var app = express();
 //app.use(express.bodyParser());
 app.use(bodyParser.json());
 
-var usermessage = [];
+var usermessage = {};
+var userId = 0;
 
 function user (user_data) {
     this.user_id = user_data.user_id;
@@ -21,7 +22,11 @@ function user (user_data) {
     };
     //this.inputMotionValue = user_data.inputMotionValue;
 }
- 
+
+app.get('/getUserId',function(req,res){
+    var id = 0;
+    res.send(id);
+});
 
 app.get('/', function (request, response) {
   var u = "helloworld";
