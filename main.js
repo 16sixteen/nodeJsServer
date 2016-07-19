@@ -27,7 +27,9 @@ app.get('/getUserId',function(req,res){
     console.log("get Id");
     var id = userId;
     userId++;
-    res.send(id);
+    res.send({
+        id:id
+    });
 });
 
 app.get('/', function (request, response) {
