@@ -40,8 +40,12 @@ app.post('/',function(req,res){
     console.log(u.user_id);
     usermessage[u.user_id] = u;
     console.log(usermessage);
+    var user_array = [];
+    for(var user in usermessage){
+        user_array.push(usermessage[user]);
+    }
     res.send(
-        {user_array:usermessage}
+        {user_array:user_array}
         );
 });
 
