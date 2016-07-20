@@ -41,9 +41,9 @@ app.post('/',function(req,res){
     console.log("get post req");
     //console.log(req.body);
     var u = new user(req.body);
-    console.log(u.user_id);
+    //console.log(u.user_id);
     usermessage[u.user_id] = u;
-    console.log(usermessage);
+    //console.log(usermessage);
     var user_array = [];
     for(var i in usermessage){
         //console.log(user);
