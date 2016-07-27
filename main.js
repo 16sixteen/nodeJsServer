@@ -11,6 +11,8 @@ var userId = 0;
 var chatmessage = {};
 //判断用户
 var avaliableUserId = new Array();
+//定时器列表
+var timerList = new Array();
 
 
 
@@ -20,6 +22,7 @@ var avaliableUserId = new Array();
 function initUserArray(){
     for(var i = 0; i < 100; i++){
         avaliableUserId[i] = 0;
+        timerList[i] = null;
     }
 }
 
@@ -30,7 +33,10 @@ function initUserArray(){
 function deleteUser(user_id){
     avaliableUserId[user_id] = 0;
     delete usermessage[user_id];
+    timerList[i] = null;
+    console.log("logout: " + user_id);
 }
+
 
 /*
  * 用户角度和位置信息类
@@ -89,7 +95,6 @@ app.post('/chat',function(req,res){
 app.post('/deleteUser',function(req,res){
     console.log(req.body);
     deleteUser(req.body.id);
-    console.log("logout: " + req.body.id);
 });
 
 /*
@@ -117,6 +122,7 @@ app.get('/', function (request, response) {
 
 /*
  * 处理用户post位置的请求，并给用户发送所有用户的位置和角度
+ * 10秒内没有请求则判断为下线
  */
 app.post('/',function(req,res){
     console.log("get post req");
@@ -137,6 +143,10 @@ app.post('/',function(req,res){
         }
     );
     delete chatmessage[u.user_id];
+    if(timerList[u.user_id]!=null){
+        clearTimeout(timer[u.user_id]);
+        timer[u.user_id] = setTimeout(deleteUser(u.user_id),10000);
+    }
 });
 
 
