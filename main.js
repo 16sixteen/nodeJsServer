@@ -143,11 +143,11 @@ app.post('/',function(req,res){
         }
     );
     delete chatmessage[u.user_id];
-    if(timerList[u.user_id]!=null){
+    if(timerList[u.user_id] != null){
         clearTimeout(timerList[u.user_id]);
-        timerList[u.user_id] = setTimeout(deleteUser(u.user_id),10000);
+        timerList[u.user_id] = setTimeout(deleteUser,20000,u.user_id);
     }else{
-        timerList[u.user_id] = setTimeout(deleteUser(u.user_id),10000);
+        timerList[u.user_id] = setTimeout(deleteUser,20000,u.user_id);
     }
 });
 
