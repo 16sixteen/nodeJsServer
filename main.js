@@ -33,7 +33,7 @@ function initUserArray(){
 function deleteUser(user_id){
     avaliableUserId[user_id] = 0;
     delete usermessage[user_id];
-    timerList[i] = null;
+    timerList[user_id] = null;
     console.log("logout: " + user_id);
 }
 
@@ -145,6 +145,8 @@ app.post('/',function(req,res){
     delete chatmessage[u.user_id];
     if(timerList[u.user_id]!=null){
         clearTimeout(timer[u.user_id]);
+        timer[u.user_id] = setTimeout(deleteUser(u.user_id),10000);
+    }else{
         timer[u.user_id] = setTimeout(deleteUser(u.user_id),10000);
     }
 });
