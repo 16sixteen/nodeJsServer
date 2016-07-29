@@ -35,6 +35,10 @@ function deleteUser(user_id){
     delete usermessage[user_id];
     timerList[user_id] = null;
     console.log("logout: " + user_id);
+    if(chatmessage[user_id]!=undefined){
+        //user_chat = chatmessage[u.user_id];
+        delete chatmessage[user_id];
+    }
 }
 
 
@@ -142,7 +146,10 @@ app.post('/',function(req,res){
             user_chat:user_chat
         }
     );
-    delete chatmessage[u.user_id];
+    if(chatmessage[u.user_id]!=undefined){
+        //user_chat = chatmessage[u.user_id];
+        delete chatmessage[u.user_id];
+    }
     if(timerList[u.user_id] != null){
         clearTimeout(timerList[u.user_id]);
         timerList[u.user_id] = setTimeout(deleteUser,20000,u.user_id);
